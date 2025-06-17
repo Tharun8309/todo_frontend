@@ -30,7 +30,7 @@ const AddTodo = () => {
     todoDateInput.current.value = '';
 
     // Send request
-    fetch("http://localhost:3000/todos", {
+    fetch("https://todo-app-backend-95cy.onrender.com/todos", {
       method: 'POST',
       credentials: "include",
       headers: {

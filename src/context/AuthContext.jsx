@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }) => {
       }
 
       try {
-        const res = await fetch("http://localhost:3000/verify", {
+        const res = await fetch("https://todo-app-backend-95cy.onrender.com/verify", {
           method: "POST",
           credentials: "include",
           headers: { "Content-Type": "application/json" }

@@ -18,7 +18,7 @@ const TodoItem = ({ id, todoText, todoDate, completed }) => {
   });
 
   const toggleComplete = () => {
-    fetch(`http://localhost:3000/todos/${id}`, {
+    fetch(`https://todo-app-backend-95cy.onrender.com/${id}`, {
       method: 'PATCH',    
       credentials: 'include',  
       headers: {'Content-Type': 'application/json'},
@@ -40,7 +40,7 @@ const TodoItem = ({ id, todoText, todoDate, completed }) => {
   }
 
   const deleteHandler = () => {
-    fetch(`http://localhost:3000/todos/${id}`, {
+    fetch(`https://todo-app-backend-95cy.onrender.com/${id}`, {
       method: 'DELETE',
       credentials: 'include'
     })

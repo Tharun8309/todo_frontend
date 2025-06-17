@@ -13,7 +13,7 @@ const LoadItems = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch("http://localhost:3000/todos", {
+    fetch("https://todo-app-backend-95cy.onrender.com/todos", {
       credentials: 'include',
     })
       .then((res) => res.json())
