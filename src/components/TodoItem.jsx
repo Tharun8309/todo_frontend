@@ -18,7 +18,7 @@ const TodoItem = ({ id, todoText, todoDate, completed }) => {
   });
 
   const toggleComplete = () => {
-    fetch(`https://todo-app-backend-95cy.onrender.com/${id}`, {
+    fetch(`https://todo-app-backend-95cy.onrender.com/todos/${id}`, {
       method: 'PATCH',    
       credentials: 'include',  
       headers: {'Content-Type': 'application/json'},
@@ -40,11 +40,19 @@ const TodoItem = ({ id, todoText, todoDate, completed }) => {
   }
 
   const deleteHandler = () => {
-    fetch(`https://todo-app-backend-95cy.onrender.com/${id}`, {
+    fetch(`https://todo-app-backend-95cy.onrender.com/todos/${id}`, {
       method: 'DELETE',
       credentials: 'include'
     })
-    .then(res => res.json())
+    .then(res =>
+      {
+        if (!res.ok) {
+          return res.json().then(err => {
+            throw new Error(err.message || "Failed to delete todo");
+          });
+        }
+        return res.json();
+      })
     .then(deletedItem => {
       if(!deletedItem.success) {
         throw new Error(deletedItem.message || "Failed to delete todo");
